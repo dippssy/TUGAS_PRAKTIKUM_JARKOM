@@ -11,21 +11,21 @@ Domain Name System (DNS) merupakan sistem yang digunakan untuk menerjemahkan nam
 **Perintah 1 - jalankan:**
 nslookup www.mit.edu<br>
 
-<img src="../assets/images/dns1.png" width="600px"><br>
+<img src="../assets/images/dns1.png" width="500px"><br>
 
 Perintah ini digunakan untuk meminta alamat IP dari domain www.mit.edu dengan menggunakan DNS server lokal. Hasilnya menunjukkan sistem menggunakan DNS server tusbind.ac.id dengan alamat IP 10.217.7.77. Respon yang diberikan bersifat non-authoritative, yang menandakan bahwa jawaban tidak langsung berasal dari server DNS otoritatif, melainkan dari cache atau hasil query ke server DNS lain, hasil juga menampilkan nama host dan alamat IP dari domain yang dicari.<br>
 
 **Perintah 2- jalankan:**
 nslookup -type=NS mit.edu<br>
 
-<img src="../assets/images/dns2.png" width="600px"><br>
+<img src="../assets/images/dns2.png" width="500px"><br>
 
 Perintah ini digunakan untuk mengetahui server DNS yang bertanggung jawab terhadap domain mit.edu dengan menggunakan opsi -type=NS. Hasil yang diperoleh menunjukkan bahwa sistem menggunakan DNS server tusbind.ac.id dengan alamat IP 10.217.7.77. Respon yang diberikan bersifat non-authoritative, yang menandakan bahwa jawaban tidak langsung berasal dari server DNS otoritatif. hasil menampilkan beberapa nama server yang menangani domain mit.edu, yang merupakan server DNS otoritatif untuk domain tersebut, beserta alamat IP yang terkait.<br>
 
 **Perintah 3- jalankan:**
 nslookup www.aiit.or.kr bitsy.mit.edu<br>
 
-<img src="../assets/images/dns3.png" width="600px"><br>
+<img src="../assets/images/dns3.png" width="500px"><br>
 
 Perintah ini digunakan untuk meminta alamat IP dari domain www.aiit.or.kr dengan mengirimkan query langsung ke DNS server bitsy.mit.edu, bukan ke DNS server lokal, permintaan tidak mendapatkan respon dan mengalami timeout. ini menunjukkan bahwa server DNS yang dituju tidak memberikan jawaban terhadap permintaan yang dikirimkan. Kondisi ini dapat terjadi karena beberapa kemungkinan, seperti server tidak aktif, tidak dapat diakses, atau adanya pembatasan jaringan seperti firewall.<br>
 
@@ -39,18 +39,18 @@ Perintah ini digunakan untuk mendapatkan alamat IP dari server web di Asia. Berd
 
 b. Jalankan nslookup agar dapat mengetahui server DNS otoritatif untuk universitas di Eropa.<br>
 
-<img src="../assets/images/dns6.png" width="600px"><br>
+<img src="../assets/images/dns6.png" width="550px"><br>
 
 Perintah ini digunakan untuk mengetahui server DNS otoritatif dari universitas di Eropa, yaitu domain **ox.ac.uk**. server DNS yang menangani domain tersebut adalah **auth6.dns.ox.ac.uk, dns1.ox.ac.uk, dns0.ox.ac.uk, dns2.ox.ac.uk, auth4.dns.ox.ac.uk, dan auth5.dns.ox.ac.uk**, domain universitas tersebut memiliki beberapa server DNS otoritatif untuk meningkatkan keandalan dan ketersediaan layanan.<br>
 
 c. Jalankan nslookup untuk mencari tahu informasi mengenai server email dari Yahoo! Mail 
 melalui salah satu server yang didapatkan di pertanyaan nomor 2. Apa alamat IP-nya?<br>
 
-<img src="../assets/images/dns7.png" width="600px"><br>
+<img src="../assets/images/dns7.png" width="550px"><br>
 Pada percobaan ini, permintaan ke server DNS ox.ac.uk tidak berhasil dan menghasilkan query refused, yang menunjukkan bahwa server tersebut tidak melayani permintaan dari luar.<br>
 
 Selanjutnya dilakukan query menggunakan DNS server lokal:<br>
-<img src="../assets/images/dns8.png" width="600px"><br>
+<img src="../assets/images/dns8.png" width="550px"><br>
 
 Berdasarkan hasil yang diperoleh, server email untuk yahoo.com adalah mta5.am0.yahoodns.net, mta6.am0.yahoodns.net, dan mta7.am0.yahoodns.net.<br>
 
@@ -88,7 +88,8 @@ Perintah ini digunakan untuk menghapus seluruh DNS cache yang tersimpan pada sis
     <img src="../assets/images/ipcon4.png" width="550px"><br>
 
 2. jalankan **ipconfig /flushdns** untuk mengosongkan DNS cache:<br>
-<img src="../assets/images/ipcon3.png" width="550px"><br>
+
+    <img src="../assets/images/ipcon3.png" width="550px"><br>
 
 3. Buka browser dan kosongkan cache agar tidak menggunakan data yang tersimpan sebelumnya.
 
@@ -100,14 +101,16 @@ Perintah ini digunakan untuk menghapus seluruh DNS cache yang tersimpan pada sis
 5. Mulai proses capture paket di Wireshark.
 
 6. Buka browser dan akses website: http://www.ietf.org<br>
-<img src="../assets/images/ipcon6.png" width="550px"><br>
+
+    <img src="../assets/images/ipcon6.png" width="550px"><br>
 
 7. Setelah halaman terbuka, hentikan proses capture.
 
 **Jawab beberapa pertanyaan berikut:**
 1. Cari pesan permintaan DNS dan balasannya. Apakah pesan tersebut dikirimkan melalui UDP 
 atau TCP?<br>
-<img src="../assets/images/ipcon7.png" width="550px"><br>
+
+    <img src="../assets/images/ipcon7.png" width="550px"><br>
 
     <img src="../assets/images/ipcon8.png" width="550px"><br>
 Berdasarkan hasil pengamatan pada paket DNS, pesan permintaan (Standard query) dikirimkan menggunakan protokol UDP, pada bagian User Datagram Protocol, pesan permintaan dan balasan DNS menggunakan UDP.
@@ -149,7 +152,7 @@ mengakses suatu gambar?<br>
     <img src="../assets/images/ipcon15.png" width="550px"><br>
 tidak, host tidak perlu mengirimkan permintaan DNS baru setiap kali mengakses gambar, karena alamat IP domain sudah disimpan dalam cache DNS sehingga dapat digunakan kembali tanpa melakukan query ulang.
 
-### **D. Analisis DNS menggunakan nslookup www.mit.edu**
+### **1. Analisis DNS menggunakan nslookup www.mit.edu**
  
 1. Mulai pengambilan paket. 
 2. Lakukan perintah nslookup www.mit.edu pada cmd<br>
@@ -188,4 +191,54 @@ terdapat 3 jawaban pada pesan balasan DNS. isi dari setiap jawaban tersebut adal
  → www.mit.edu.edgekey.net
  dan www.mit.edu.edgekey.net
  → e9566.dscb.akamaiedge.net, serta satu record A yang berisi alamat IP yaitu 23.217.163.122.
+
+### **2. Analisis DNS menggunakan nslookup –type=NS mit.edu**
  
+Ulangi percobaan sebelumnya, namun gunakan perintah nslookup -type=NS mit.edu pada cmd<br>
+
+<img src="../assets/images/dns2.png" width="500px"><br>  
+
+**Menjawab Pertanyaan:**
+
+1. Ke alamat IP manakah pesan permintaan DNS dikirimkan? Apakah alamat IP tersebut merupakan default alamat IP server DNS lokal Anda? <br>
+
+    <img src="../assets/images/ipcon22.png" width="550px"><br>
+    pesan permintaan DNS dikirim ke alamat IP 10.217.7.77, dan alamat IP tersebut merupakan default alamat IP server DNS lokal.
+
+2. Periksa pesan permintaan DNS. Apa ”jenis” atau ”type” dari pesan tersebut? Apakah pesan tersebut mengandung ”jawaban” atau ”answers”?<br>
+
+    <img src="../assets/images/ipcon23.png" width="550px"><br>
+jenis (type) dari pesan permintaan DNS adalah NS, dan pesan tersebut tidak mengandung jawaban karena nilai Answer RRs = 0.
+
+3. Periksa pesan balasan DNS. Apa nama server MIT yang diberikan oleh pesan balasan? 
+Apakah pesan balasan ini juga memberikan alamat IP untuk server MIT tersebut? <br>
+
+    <img src="../assets/images/ipcon24.png" width="350px"><br>
+terdapat 8 jawaban pada pesan balasan DNS, yang berisi record NS (name server) untuk domain mit.edu, yaitu ns1-37.akam.net, asia2.akam.net, eur5.akam.net, use2.akam.net, use5.akam.net, asia1.akam.net, usw2.akam.net, dan ns1-173.akam.net. selain itu terdapat additional records yang berisi alamat IP dari beberapa name server tersebut.
+
+### **3. Analisis DNS menggunakan nslookup www.aiit.or.kr bitsy.mit.edu**
+ 
+Ulangi percobaan sebelumnya, namun gunakan perintah nslookup www.aiit.or.kr bitsy.mit.edu pada cmd<br>
+
+<img src="../assets/images/dns3.png" width="500px"><br>  
+
+**Menjawab Pertanyaan:**
+
+1. Ke alamat IP manakah pesan permintaan DNS dikirimkan? Apakah alamat IP tersebut merupakan default alamat IP server DNS lokal Anda? <br>
+
+    <img src="../assets/images/ipcon25.png" width="550px"><br>
+    alamat IP 18.0.72.3 merupakan alamat dari server DNS bitsy.mit.edu yang digunakan secara langsung pada perintah nslookup, sehingga bukan merupakan DNS server lokal.
+
+2. Periksa pesan permintaan DNS. Apa ”jenis” atau ”type” dari pesan tersebut? Apakah pesan tersebut mengandung ”jawaban” atau ”answers”? <br>
+
+    <img src="../assets/images/ipcon26.png" width="550px"><br>
+jenis (type) dari pesan permintaan DNS adalah A, dan pesan tersebut tidak mengandung jawaban karena nilai Answer RRs = 0.
+
+3. Periksa pesan balasan DNS. Berapa banyak ”jawaban” atau “answers” yang terdapat di 
+dalamnya. Apa saja isi yang terkandung dalam setiap jawaban tersebut? <br>
+
+    <img src="../assets/images/dns3.png" width="350px"><br>
+tidak terdapat pesan balasan DNS karena permintaan mengalami timeout, sehingga server tidak memberikan jawaban terhadap query yang dikirimkan.
+
+
+
