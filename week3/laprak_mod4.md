@@ -103,17 +103,30 @@ atau TCP?<br>
 <img src="../assets/images/ipcon7.png" width="550px"><br>
 
     <img src="../assets/images/ipcon8.png" width="550px"><br>
-Berdasarkan hasil pengamatan pada paket DNS, pesan permintaan (Standard query) dikirimkan menggunakan protokol UDP, yang terlihat pada bagian User Datagram Protocol pada detail paket, pesan permintaan dan balasan DNS pada percobaan ini menggunakan UDP.
+Berdasarkan hasil pengamatan pada paket DNS, pesan permintaan (Standard query) dikirimkan menggunakan protokol UDP, pada bagian User Datagram Protocol, pesan permintaan dan balasan DNS menggunakan UDP.
 
 2. Apa port tujuan pada pesan permintaan DNS? Apa port sumber pada pesan balasannya?<br>
 
     <img src="../assets/images/ipcon9.png" width="550px"><br>
-Port tujuan pada pesan permintaan DNS adalah 53, yang merupakan port standar untuk layanan DNS. Sedangkan port sumber yang digunakan pada pesan balasan DNS adalah 62158, yaitu port yang sebelumnya digunakan oleh client saat mengirim permintaan.<br> 
-DNS REQUEST -> Source Port (client): 62158 & Destination Port (server): 53<br>
-DNS RESPONSE -> Source Port (server): 53 & Destination Port (client): 62158<br>
+Port tujuan pada pesan permintaan DNS adalah 53, port sumber yang digunakan pada pesan balasan DNS adalah 62158, yaitu port yang sebelumnya digunakan oleh client saat mengirim permintaan.<br> 
+DNS Request -> Source Port (client): 62158 & Destination Port (server): 53<br>
+DNS Response -> Source Port (server): 53 & Destination Port (client): 62158<br>
 
 3. Pada pesan permintaan DNS, apa alamat IP tujuannya? Apa alamat IP server DNS lokal anda 
 (gunakan ipconfig untuk mencari tahu)? Apakah kedua alamat IP tersebut sama?<br>
+    <img src="../assets/images/ipcon11.png" width="450px"><br>
+A   lamat IP tujuan adalah 10.217.7.77. DNS server lokal host juga memiliki alamat IP 10.217.7.77. kedua alamat IP tersebut sama, permintaan DNS dikirim langsung ke DNS server lokal.<br>
 
+4. Periksa pesan permintaan DNS. Apa “jenis” atau ”type” dari pesan tersebut? Apakah pesan 
+permintaan tersebut mengandung ”jawaban” atau ”answers”?<br> 
 
+    <img src="../assets/images/ipcon12.png" width="450px"><br>
+Dari pesan tersebut adalah A (Address), yaitu untuk meminta alamat IP dari suatu domain, pesan permintaan tidak mengandung answer, nilai Answer RRs: 0.<br>
 
+5.  Periksa pesan balasan DNS. Berapa banyak ”jawaban” atau ”answers” yang terdapat di 
+dalamnya? Apa saja isi yang terkandung dalam setiap jawaban tersebut?<br>
+
+    <img src="../assets/images/ipcon13.png" width="450px"><br>
+    pesan balasan DNS (Standard query response), terdapat 1 answer, Answer RRs: 1. Isi dari jawaban tersebut adalah alamat IP dari domain yang diminta, 146.112.41.2 untuk domain doh.opendns.com<br>
+
+6. Perhatikan paket TCP SYN yang selanjutnya dikirimkan oleh host Anda. Apakah alamat IP pada paket tersebut sesuai dengan alamat IP yang tertera pada pesan balasan DNS? 
