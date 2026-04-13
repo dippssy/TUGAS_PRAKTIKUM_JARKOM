@@ -40,5 +40,4 @@ while running:
         )
 
     connectionSocket.close()
-    
 serverSocket.close()        
