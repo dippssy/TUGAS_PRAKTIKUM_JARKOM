@@ -104,11 +104,5 @@ UDP kedua merupakan balasan dari paket UDP yang pertama. (Petunjuk: agar paket k
 merupakan balasan dari paket pertama, pengirim paket pertama harus menjadi tujuan dari 
 paket kedua). Jelaskan hubungan antara nomor port pada kedua paket tersebut!
 
-    Berdasarkan pengamatan pasangan paket UDP, terlihat bahwa nomor port pada paket request dan response saling berkebalikan. Pada paket request:
-
-- Source Port = 4334
-- Destination Port = 161
-
-    Sedangkan pada paket response:
 
 
