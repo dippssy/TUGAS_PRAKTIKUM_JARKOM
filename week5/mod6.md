@@ -111,10 +111,4 @@ paket kedua). Jelaskan hubungan antara nomor port pada kedua paket tersebut!
 
     Sedangkan pada paket response:
 
-- Source Port = 161
-- Destination Port = 4334
-
-    Hal ini menunjukkan bahwa pada komunikasi UDP, balasan dikirim kembali ke port asal pengirim, sehingga port sumber dan tujuan akan bertukar antara request dan response.<br>
-
-    <img src="../assets/images/udp3.png" width="550px"><br>
 
