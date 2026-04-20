@@ -17,7 +17,8 @@ running = True
 while running:
     #menerima koneksi dari client
     connectionSocket, addr = serverSocket.accept() ##menangkap tuple
-
+    print("[SYSTEM] Terhubung dengan:", addr)
+    
     while True:
         #pesan yang diterima = 101001
         message = connectionSocket.recv(2048).decode()
