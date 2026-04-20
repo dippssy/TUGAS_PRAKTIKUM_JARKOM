@@ -2,7 +2,7 @@ from socket import *
 import sys
 
 # Konfigurasi alamat dan port server
-serverName = '10.218.1.58'
+serverName = '192.168.1.19'
 serverPort = 12000
 
 # Inisialisasi socket UDP di luar loop agar tidak dibuat berulang-ulang
