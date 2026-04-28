@@ -1,39 +1,62 @@
 from socket import *
 import threading
 
-serverSocket = socket(AF_INET, SOCK_STREAM)
-
-serverSocket.bind(('', 6789))
-serverSocket.listen(5) #terima 5 client
-while True:
-    # Establish the connection
-    print('Ready to serve...')
-    connectionSocket, addr = serverSocket.accept()
-
+def handle_client(connectionSocket):
     try:
-        #menerima pesan dari user
-        message = connectionSocket.recv(1024).decode() #decode = mengubah byte menjadi string
+        # menerima pesan user
+        message = connectionSocket.recv(1024).decode() # decode = 10101010 = "message"
 
+        # index.html, hello.html
+        # message isinya = /GET /index.html HTTP/1.1
         message = message[4:15]
         print(message)
-        # filename = message.split()[1] #message = /GET /index.html HTTP/1.1
-        #membuka index.html dan menghilangkan "/" di awal
+        # filename = message.split()[1]
+
+        # membuka index.html serta menghilangkan "/"
         f = open(message[1:])
-        #membaca file html
-        outputdata = f.read()
-        #kirim respon
-        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())
-        #kirim data
-        connectionSocket.sendall(outputdata.encode())
-        #tutup koneksi
+
+        # membaca file html
+        outputData = f.read()
+
+        # kirim respon
+        connectionSocket.send(
+            "HTTP/1.1 200 OK\r\n\r\n".encode()
+        )
+
+        # kirim data
+        connectionSocket.sendall(outputData.encode())
+
+        # tutup koneksi
         connectionSocket.close()
-        
+    
     except IOError:
-        connectionSocket.send("HTTP/1.1 404 Not Found\r\n\r\n".encode()) #send respon bila tdk ditemukan
-        connectionSocket.send("<h1>404 Not Found</h1>".encode()) #kirim data 404
+        # kirim respon bila tidak ditemukan
+        connectionSocket.send(
+            "HTTP/1.1 404 Not Found\r\n\r\n".encode()
+        )
+
+        # kirim data
+        connectionSocket.send(
+            "<h1>404 Not Found</h1>".encode()
+        )
+
+        # tutup koneksinya
         connectionSocket.close()
 
 
-    serverSocket.close()
-    threading.exit()
+serverSocket = socket(AF_INET, SOCK_STREAM)
+serverSocket.bind(('', 6789))
+serverSocket.listen(5) # dapat menerima sebanyak 5 client
+print("[SYSTEM] server is running...")
 
+while True:
+    connectionSocket, addr =  serverSocket.accept()
+
+    # membuat thread dan target threadnya, beserta parameter
+    thread = threading.Thread(
+        target = handle_client,
+        args = (connectionSocket,)
+        )
+
+    # menjalankan thread
+    thread.start()
