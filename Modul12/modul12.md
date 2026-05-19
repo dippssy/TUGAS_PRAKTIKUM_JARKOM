@@ -55,7 +55,7 @@ Berdasarkan hasil capture terlihat pasangan paket ICMP secara bergantian, yaitu 
 5. Mengamati Paket ICMP Echo Request & Echo Reply.<br>
 
 
-**ICMP Echo Request:**
+**ICMP Echo Request:**<br>
 <img src="../assets/images/icmp4.png" width="550px"><br>
 Berdasarkan hasil capture Wireshark pada paket request:
 - Type = 8 → menunjukkan ICMP Echo Request
@@ -66,7 +66,7 @@ Berdasarkan hasil capture Wireshark pada paket request:
 
 Paket dikirim dari 192.168.0.104 menuju 143.89.209.9 dan memiliki TTL 128.
 
-**ICMP Echo Reply:**
+**ICMP Echo Reply:**<br>
 <img src="../assets/images/icmp3.png" width="550px"><br>
 Berdasarkan hasil capture Wireshark pada paket reply:
 - Type = 0 → menunjukkan ICMP Echo Reply
@@ -89,7 +89,7 @@ Paket dikirim dari 143.89.209.9 menuju 192.168.0.104 dengan TTL 43, yang menunju
 Setelah dilakukan filter `icmp` pada Wireshark, terlihat beberapa jenis pesan ICMP yang muncul selama proses traceroute berlangsung, yaitu Echo Request, Time-to-live exceeded, dan Destination unreachable. Paket Echo Request dikirim dari komputer `192.168.0.104` menuju host tujuan `143.89.209.9` dengan nilai TTL tertentu. Ketika nilai TTL habis di tengah perjalanan, router yang dilewati akan mengirim balasan berupa pesan **Time-to-live exceeded** kepada pengirim.
 Pada capture terlihat bahwa saat paket dikirim dengan `ttl=1`, balasan TTL Exceeded berasal dari router `192.168.0.1`. Setelah nilai TTL dinaikkan menjadi `ttl=2`, balasan berasal dari router berikutnya yaitu `192.168.250.1`. Hal ini menunjukkan bahwa traceroute memanfaatkan mekanisme TTL untuk mengetahui jalur atau hop yang dilewati paket sebelum mencapai tujuan. Selain itu juga terlihat beberapa pesan **Destination unreachable** yang menandakan paket tidak dapat diteruskan menuju tujuan tertentu.
 
-5. Pilih paket ICMP TTL Exceeded
+5. Pilih paket ICMP TTL Exceeded<br>
 <img src="../assets/images/icmp7.png" width="550px"><br>
 Berdasarkan hasil analisis paket **Time-to-live exceeded** pada Wireshark, terlihat bahwa router `192.168.0.1` mengirim pesan ICMP kepada komputer `192.168.0.104` karena nilai TTL paket telah habis sebelum mencapai tujuan `143.89.209.9`. Pada bagian ICMP terlihat informasi:
 
